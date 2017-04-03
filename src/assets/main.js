@@ -23,7 +23,7 @@ function guess() {
         showAnswer(true);
         showReplay();
     }
-    else if(!getResults && parseInt(attempt.value, 10) >= 10)
+    else if(parseInt(attempt.value, 10) >= 10 && !getResults)
     {
         setMessage('You Lose! :(');
         showAnswer(false);
@@ -39,8 +39,9 @@ function guess() {
 function setHiddenFields(){
     
     attempt.value=0;
-    for(var i=0; i<4; i++){
-        answer.value+=Math.floor(Math.random()*10).toString();
+    answer.value=Math.floor(Math.random()*1000).toString();
+    while(answer.value.length <4){
+        answer.value+=0;
     }
   
 }
